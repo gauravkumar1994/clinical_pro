@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{%load static%}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{%static 'cssfolder/golu.css'  %}">
+    <img src="{%static 'images/img1.jpg' %}" width="600px" height="200px">
+    <img src="{%static 'images/img2.jpg' %}" width="150px" height="200px">
+    <img src="{%static 'images/img3.jpg' %}" width="570px" height="200px">
+</head>
+<body>
+    <h1><i>!! WELCOME TO OUR PATIENT PORTAL YOUR RECORD DISPLAY HERE !!</i></h1>
+    <table>
+        {% if obj %}
+        <thead>
+            <th>ID</th>
+            <th>FIRST NAME</th>
+            <th>LAST NAME</th>
+            <th>AGE</th>
+        </thead>
+        {% for x in obj%}
+        <tr>
+            <td>{{x.id}}</td>
+            <td>{{x.firstname}}</td>
+            <td>{{x.lastname}}</td>
+            <td>{{x.age}}</td>
+            <td><a href='/delete/{{x.id}}'>DELETE</a></td>
+            <td><a href='/update/{{x.id}}'>UPDATE</a></td>
+            <td><a href='/showclinical/{{x.id}}'>SHOW DATA</a></td>
+            <td><a href='/analysis/{{x.id}}'>ANALYSIS</a></td>
+            
+        </tr>
+        {%endfor%} 
+        {%else%} 
+        <h3> we have not found any record </h3> 
+        {%endif%}
+    </table>
+    <br>
+    <a href='/add'><i><h3>ADD NEW PATIENT RECORD</h3></i></a>
+</body>
+</html>

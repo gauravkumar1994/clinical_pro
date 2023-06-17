@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><i>ANALYSIS YOUR BMI DATA</i></h1>
+    <br>
+    <table>
+        {%if data%}
+        <thead>
+            <th>COMPONENT NAME</th>
+            <th>COMPONENT VALUE</th>
+            <th>MEASURE DATE AND TIME</th>
+        </thead>
+        {%for eachEntry in data%}
+        <tr>
+            <td>{{eachEntry.componentname}}</td>
+            <td>{{eachEntry.componentvalue}}</td>
+            <td>{{eachEntry.measureDATETIME}}</td>
+        </tr>
+        {%endfor%} 
+        {%else%} 
+        <p>NO DATA FOUND</p>
+        {%endif%}
+    </table>
+    <br>
+    <a href='/show'>Go Back</a>
+</body>
+</html>
